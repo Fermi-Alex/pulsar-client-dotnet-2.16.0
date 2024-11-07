@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+    <PackageId>Pulsar.Client</PackageId>
+    <Title>Pulsar.Client</Title>
+    <RootNamespace>Pulsar.Client</RootNamespace>
+    <AssemblyName>Pulsar.Client</AssemblyName>
+    <Version>2.16.0</Version>
+    <Company>F# community</Company>
+    <Description>.NET client library for Apache Pulsar</Description>
+    <RepositoryUrl>https://github.com/fsprojects/pulsar-client-dotnet</RepositoryUrl>
+    <PackageReleaseNotes>replicateSubscriptionState support</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/fsprojects/pulsar-client-dotnet</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>pulsar</PackageTags>
+    <Authors>F# community</Authors>
+    <PackageVersion>2.16.0</PackageVersion>
+    <DebugType>portable</DebugType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Optional: Declare that the Repository URL can be published to NuSpec -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <!-- Optional: Embed source files that are not tracked by the source control manager to the PDB -->
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <WarningLevel>3</WarningLevel>
+    <WarningsAsErrors>3239;0025</WarningsAsErrors>
+    <DebugType>portable</DebugType>
+    <NoWarn>3186;40</NoWarn>
+    <PackageIcon>pulsar-client-dotnet.png</PackageIcon>
+    <PackageIconUrl />
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pulsar.Client.Proto\Pulsar.Client.Proto.csproj" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <None Include="..\..\images\pulsar-client-dotnet.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="paket.references" />
+    <Compile Include="Common\UMX.fs" />
+    <Compile Include="Common\Log.fs" />
+    <Compile Include="Common\Tools.fs" />
+    <Compile Include="Internal\BatchMessageAcker.fs" />
+    <Compile Include="Internal\Backoff.fs" />
+    <Compile Include="Internal\Generators.fs" />
+    <Compile Include="Common\NamespaceName.fs" />
+    <Compile Include="Common\TopicName.fs" />
+    <Compile Include="Common\MessageId.fs" />
+    <Compile Include="Api\PulsarClientException.fs" />
+    <Compile Include="Transaction\Transaction.fs" />
+    <Compile Include="Common\DTO.fs" />
+    <Compile Include="Common\ServiceUri.fs" />
+    <Compile Include="Common\RetryMessageUtil.fs" />
+    <Compile Include="Api\BatchReceivePolicy.fs" />
+    <Compile Include="Api\KeySharedPolicy.fs" />
+    <Compile Include="Api\ISchema.fs" />
+    <Compile Include="Common\Commands.fs" />
+    <Compile Include="Common\ConsumerBase.fs" />
+    <Compile Include="Api\AuthenticationDataProvider.fs" />
+    <Compile Include="Api\Authentication.fs" />
+    <Compile Include="Api\IMessageRouter.fs" />
+    <Compile Include="Api\IConsumer.fs" />
+    <Compile Include="Api\IReader.fs" />
+    <Compile Include="Api\IProducer.fs" />
+    <Compile Include="Api\DeadLetters.fs" />
+    <Compile Include="Api\IConsumerInterceptor.fs" />
+    <Compile Include="Api\IProducerInterceptor.fs" />
+    <Compile Include="Api\IMessageCrypto.fs" />
+    <Compile Include="Api\ITableView.fs" />
+    <Compile Include="Internal\DeadLetters.fs" />
+    <Compile Include="Internal\ConsumerInterceptors.fs" />
+    <Compile Include="Internal\ProducerInterceptors.fs" />
+    <Compile Include="Internal\ProducerStatsImpl.fs" />
+    <Compile Include="Internal\ConsumerStatsImpl.fs" />
+    <Compile Include="Api\Configuration.fs" />
+    <Compile Include="Auth\AuthenticationDataTls.fs" />
+    <Compile Include="Auth\AuthenticationDataToken.fs" />
+    <Compile Include="Auth\AuthenticationToken.fs" />
+    <Compile Include="Auth\AuthenticationTls.fs" />
+    <Compile Include="Auth\Oauth2\TokenClient.fs" />
+    <Compile Include="Auth\Oauth2\AuthenticationOauth2.fs" />
+    <Compile Include="Auth\DefaultImplementation.fs" />
+    <Compile Include="Schema\MultiVersionSchemaInfoProvider.fs" />
+    <Compile Include="Schema\BytesSchema.fs" />
+    <Compile Include="Schema\BooleanSchema.fs" />
+    <Compile Include="Schema\DateSchema.fs" />
+    <Compile Include="Schema\TimeSchema.fs" />
+    <Compile Include="Schema\TimestampSchema.fs" />
+    <Compile Include="Schema\DoubleSchema.fs" />
+    <Compile Include="Schema\FloatSchema.fs" />
+    <Compile Include="Schema\ByteSchema.fs" />
+    <Compile Include="Schema\ShortSchema.fs" />
+    <Compile Include="Schema\IntSchema.fs" />
+    <Compile Include="Schema\LongSchema.fs" />
+    <Compile Include="Schema\StringSchema.fs" />
+    <Compile Include="Schema\JsonSchema.fs" />
+    <Compile Include="Schema\KeyValueSchema.fs" />
+    <Compile Include="Schema\ProtobufSchema.fs" />
+    <Compile Include="Schema\AvroSchema.fs" />
+    <Compile Include="Schema\AutoProduceBytesSchema.fs" />
+    <Compile Include="Schema\AutoConsumeSchema.fs" />
+    <Compile Include="Schema\ProtobufNativeSchema.fs" />
+    <Compile Include="Internal\TaskSeq.fs" />
+    <Compile Include="Internal\Compression .fs" />
+    <Compile Include="Internal\ChunkedMessageTracker.fs" />
+    <Compile Include="Internal\BatchMessageContainer.fs" />
+    <Compile Include="Internal\Routing.fs" />
+    <Compile Include="Internal\UnAckedMessageTracker.fs" />
+    <Compile Include="Internal\NegativeAcksTracker.fs" />
+    <Compile Include="Internal\ClientCnx.fs" />
+    <Compile Include="Internal\ConnectionPool.fs" />
+    <Compile Include="Internal\EndPointResolver.fs" />
+    <Compile Include="Internal\BinaryLookupService.fs" />
+    <Compile Include="Internal\HttpLookupService.fs" />
+    <Compile Include="Internal\ConnectionHandler.fs" />
+    <Compile Include="Internal\AcknowledgmentsGroupingTracker.fs" />
+    <Compile Include="Internal\ProducerImpl.fs" />
+    <Compile Include="Internal\ConsumerImpl.fs" />
+    <Compile Include="Internal\ReaderImpl.fs" />
+    <Compile Include="Internal\MultiTopicsConsumerImpl.fs" />
+    <Compile Include="Internal\MultiTopicsReaderImpl.fs" />
+    <Compile Include="Internal\PartitionedProducerImpl.fs" />
+    <Compile Include="Internal\TransactionMetaStoreHandler.fs" />
+    <Compile Include="Internal\TableViewImpl.fs" />
+    <Compile Include="Api\Schema.fs" />
+    <Compile Include="Api\AuthenticationFactory.fs" />
+    <Compile Include="Api\AuthenticationFactoryOAuth2.fs" />
+    <Compile Include="Crypto\ICryptoKeyReader.fs" />
+    <Compile Include="Crypto\MessageCrypto.fs" />
+    <Compile Include="Transaction\TransactionCoordinatorClient.fs" />
+    <Compile Include="Transaction\TransactionBuilder.fs" />
+    <Compile Include="Api\ProducerBuilder.fs" />
+    <Compile Include="Api\ConsumerBuilder.fs" />
+    <Compile Include="Api\ReaderBuilder.fs" />
+    <Compile Include="Api\TableViewBuilder.fs" />
+    <Compile Include="Api\PulsarClient.fs" />
+    <Compile Include="Api\PulsarClientBuilder.fs" />
+  </ItemGroup>
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+    </ItemGroup>
+  </Target>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

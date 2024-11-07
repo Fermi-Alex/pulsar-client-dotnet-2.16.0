@@ -1,0 +1,56 @@
+name: .NET Core Ubuntu
+
+on: [pull_request, push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Up standalone docker-composer
+      run: |
+        cd tests/compose/standalone
+        docker-compose up -d
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '7.0.x'
+        include-prerelease: true
+
+    - name: Install dotnet tools locally
+      run: dotnet tool restore
+
+    - name: Paket Install
+      run: dotnet paket install
+
+    - name: Dotnet Restore
+      run: dotnet restore
+
+    - name: Dotnet Build Release
+      run: dotnet build -c Release --no-restore
+
+    - name: Apt-get Install Snappy & ZSTD
+      run: |
+        sudo apt-get install -y libsnappy-dev
+        sudo apt-get install -y libzstd-dev
+
+    - name: Run Unit Tests
+      run: |
+        cd tests/UnitTests
+        dotnet run -c Release --no-build
+
+    - name: docker-compose status
+      run: |
+        cd tests/compose/standalone
+        docker-compose ps
+        docker-compose logs init
+
+    - name: Run Integration Tests
+      timeout-minutes: 3
+      run: |
+        cd tests/IntegrationTests
+        dotnet run -c Release --no-build --no-spinner --debug

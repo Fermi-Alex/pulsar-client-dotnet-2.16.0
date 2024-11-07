@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <GenerateProgramFile>false</GenerateProgramFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWarn>3186</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="paket.references" />
+    <Compile Include="Expect.fs" />
+    <Compile Include="Common\Properties.fs" />
+    <Compile Include="Common\HashTests.fs" />
+    <Compile Include="Common\TopicNameTests.fs" />
+    <Compile Include="Common\CommandTests.fs" />
+    <Compile Include="Common\NamespaceNameTests.fs" />
+    <Compile Include="Common\ExceptionsTests.fs" />
+    <Compile Include="Common\ToolsTests.fs" />
+    <Compile Include="Common\MessageTests.fs" />
+    <Compile Include="Api\ServiceUriTests.fs" />
+    <Compile Include="Api\ConfigurationTests.fs" />
+    <Compile Include="Api\ConsumerBuilderTests.fs" />
+    <Compile Include="Api\ProducerBuilderTests.fs" />
+    <Compile Include="Api\PulsarClientBuilderTests.fs" />
+    <Compile Include="Internal\EndPointResolverTests.fs" />
+    <Compile Include="Internal\CompressionCodecTests.fs" />
+    <Compile Include="Internal\AcknowledgmentsGroupingTrackerTests.fs" />
+    <Compile Include="Internal\ManualInvokeScheduler.fs" />
+    <Compile Include="Internal\UnAckedMessageTrackerTests.fs" />
+    <Compile Include="Internal\NegativeAcksTracker.fs" />
+    <Compile Include="Internal\SchemaTests.fs" />
+    <Compile Include="Internal\TaskSeq.fs" />
+    <Compile Include="Internal\StatsTests.fs" />
+    <Compile Include="Internal\ChunkedMessageTrackerTests.fs" />
+    <Compile Include="Internal\Transaction.fs" />
+    <Compile Include="Tests.fs" />
+    <Compile Include="Main.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Pulsar.Client.Proto\Pulsar.Client.Proto.csproj" />
+    <ProjectReference Include="..\..\src\Pulsar.Client\Pulsar.Client.fsproj" />
+    <ProjectReference Include="..\AvroGenerated\AvroGenerated.csproj" />
+    <ProjectReference Include="..\ProtobufNativeGenerated\ProtobufNativeGenerated.csproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>
