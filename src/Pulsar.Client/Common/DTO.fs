@@ -86,6 +86,23 @@ type SchemaType =
     | AUTO_CONSUME = -3
     | AUTO_PUBLISH = -4
 
+type internal GetSchemaHTTPResponse(version: int64, ``type``: SchemaType,
+        timestamp: int64, data: string, properties: IReadOnlyDictionary<string, string>) = 
+    class
+        //let versionInternal = version
+        //let typeInternal = ``type``
+        //let timestampInternal = timestamp
+        //let dataInternal = data
+        //let propertiesInternal = properties
+
+        member val version = version with get, set
+        member val ``type`` = ``type`` with get, set
+        member val timestamp = timestamp with get, set
+        member val data = data with get, set
+        member val properties = properties with get, set
+    end
+
+
 type SchemaInfo =
     {
         Name: string

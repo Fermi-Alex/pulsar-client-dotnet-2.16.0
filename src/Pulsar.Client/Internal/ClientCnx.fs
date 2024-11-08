@@ -574,7 +574,7 @@ and internal ClientCnx (config: PulsarClientConfiguration,
                 checkServerError cmd.Error cmd.Message
                 handleError %cmd.RequestId cmd.Error cmd.Message BaseCommand.Type.PartitionedMetadataResponse
             else
-                let result = PartitionedTopicMetadata { Partitions = int cmd.Partitions }
+                let result = PartitionedTopicMetadata { Partitions = int cmd.Partitions}
                 handleSuccess %cmd.RequestId result BaseCommand.Type.PartitionedMetadataResponse
         | XCommandSendReceipt cmd ->
             match producers.TryGetValue %cmd.ProducerId with

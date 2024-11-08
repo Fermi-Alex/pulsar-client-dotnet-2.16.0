@@ -31,7 +31,9 @@ type internal PulsarClientMessage =
 type PulsarClient internal (config: PulsarClientConfiguration) as this =
 
     let connectionPool = ConnectionPool(config)
-    let lookupService = BinaryLookupService(config, connectionPool)
+    let lookupService = if (config.ServiceAddresses.Head.AbsoluteUri.StartsWith "http")
+                        then HttpLookupService(config) :> ILookupService
+                        else BinaryLookupService(config, connectionPool) :> ILookupService
     let producers = HashSet<IAsyncDisposable>()
     let consumers = HashSet<IAsyncDisposable>()
     let schemaProviders = Dictionary<CompleteTopicName, MultiVersionSchemaInfoProvider>()

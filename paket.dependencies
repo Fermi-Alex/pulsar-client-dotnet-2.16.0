@@ -1,6 +1,6 @@
 source https://api.nuget.org/v3/index.json
 storage: none
-framework: netstandard2.0
+framework: netstandard2.0, net461
 
 nuget FSharp.UMX
 nuget FSharp.Core
@@ -25,6 +25,8 @@ nuget Apache.Avro
 nuget NSec.Cryptography 20.2.0
 nuget PemUtils
 nuget System.Threading.Channels
+nuget Flurl.Http
+nuget FSharp.Json
 
 group Tests
   framework: net7.0

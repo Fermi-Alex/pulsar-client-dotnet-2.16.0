@@ -12,7 +12,6 @@ zlib.net-mutliplatform
 K4os.Compression.LZ4
 Snappy.Standard
 ZstdNet
-System.Text.Json
 System.IO.Pipelines
 Microsoft.Extensions.Caching.Memory
 AvroSchemaGenerator

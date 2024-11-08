@@ -25,9 +25,10 @@ module internal ServiceUri =
 
     let private pattern =
         sprintf
-            "^(?<%s>pulsar)(?:\+(?<%s>ssl))*://(?:(?<%s>[^\s/;,]+)[;,]?)+(?<%s>/.+)?$"
+            "^((?<%s>pulsar)(?:\+(?<%s>ssl))*)|(?<%s>http)://(?:(?<%s>[^\s/;,]+)[;,]?)+(?<%s>/.+)?$"
             schemeGroup
             servicesGroup
+            schemeGroup
             hostsGroup
             pathGroup
 
